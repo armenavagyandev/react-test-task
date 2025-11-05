@@ -25,6 +25,7 @@ export default defineConfig([
       indent: ['error', 2],
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
       'comma-dangle': ['error', 'always-multiline'],
+      "object-curly-spacing": ["error", "always"]
     },
   },
 ])

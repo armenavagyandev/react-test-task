@@ -1,10 +1,9 @@
+import { Table } from '@/components/table'
 
-function App() {
+export const App = () => {
   return (
     <>
-
+      <Table />
     </>
   )
 }
-
-export default App
