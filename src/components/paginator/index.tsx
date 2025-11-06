@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/Button'
-import { Select } from '@/components/ui/Select.tsx'
+import { Select } from '@/components/ui/Select'
 
 type Props = {
   currentPage: number

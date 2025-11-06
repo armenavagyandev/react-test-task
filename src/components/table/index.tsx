@@ -7,7 +7,7 @@ import { HeadItem, type SortType } from '@/components/table/HeadItem'
 import { formatFieldName } from '@/utils/helpers/text'
 import { usePagination } from '@/utils/hooks/usePagination'
 import { useDragAndDrop } from '@/utils/hooks/useDragAndDrop'
-import { SortDirection } from '@/constants/sort-direction.ts'
+import { SortDirection } from '@/constants/sort-direction'
 
 export type TableDataType = Record<string, string | number>
 
@@ -29,10 +29,7 @@ export const Table = ({
   onDragAndDrop,
 }: Props) => {
   const [search, setSearch] = useState('')
-  const [sort, setSort] = useState<SortType>({
-    field: keyField,
-    direction: SortDirection.DESC,
-  })
+  const [sort, setSort] = useState<SortType>()
 
   const {
     page,
@@ -48,10 +45,12 @@ export const Table = ({
         Object.values(row).some(value => String(value).toLowerCase().includes(search.trim().toLowerCase())),
       )
       .sort((a, b) => {
-        const modifier = sort.direction === SortDirection.ASC ? 1 : -1
+        const modifier = sort?.direction === SortDirection.ASC ? 1 : -1
 
-        const fieldA = a[sort.field]
-        const fieldB = b[sort.field]
+        if (!sort) return 0
+
+        const fieldA = a[sort?.field]
+        const fieldB = b[sort?.field]
 
         if (fieldA == null || fieldB == null) return 0
 
@@ -123,9 +122,15 @@ export const Table = ({
                   }
 
                   <RowItem>
-                    <Button onClick={() => onDelete(item[keyField], keyField)}>
+                    <div className="flex items-center gap-2">
+                      <Button onClick={() => onDelete(item[keyField], keyField)}>
                         Delete
-                    </Button>
+                      </Button>
+
+                      <Button onClick={() => setSort(undefined)}>
+                        Reset Sorting
+                      </Button>
+                    </div>
                   </RowItem>
                 </tr>
               )

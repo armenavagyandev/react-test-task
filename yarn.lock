@@ -1019,6 +1019,18 @@ detect-libc@^2.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.1.2.tgz#689c5dcdc1900ef5583a4cb9f6d7b473742074ad"
   integrity sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==
 
+effector-react@^23.3.0:
+  version "23.3.0"
+  resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-23.3.0.tgz#9244c3f677adaea69e6815d68000d25bc466c1f3"
+  integrity sha512-QR0+x1EnbiWhO80Yc0GVF+I9xCYoxBm3t+QLB5Wg+1uY1Q1BrSWDmKvJaJJZ/+9BU4RAr25yS5J2EkdWnicu8g==
+  dependencies:
+    use-sync-external-store "^1.0.0"
+
+effector@^23.4.4:
+  version "23.4.4"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-23.4.4.tgz#2d1d051d022daf44de9561cc9853d65aa493025e"
+  integrity sha512-QkZboRN28K/iwxigDhlJcI3ux3aNbt8kYGGH/GkqWG0OlGeyuBhb7PdM89Iu+ogV8Lmz16xIlwnXR2UNWI6psg==
+
 electron-to-chromium@^1.5.238:
   version "1.5.245"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.245.tgz#81aea81adf1e06b6f703b4b35ac6d543421d0fd9"
@@ -1823,6 +1835,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-sync-external-store@^1.0.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz#b174bfa65cb2b526732d9f2ac0a408027876f32d"
+  integrity sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==
 
 vite-tsconfig-paths@^5.1.4:
   version "5.1.4"
