@@ -26,7 +26,7 @@ const changeSearchTerm = createEvent<string>()
 $searchTerm.on(changeSearchTerm, (_, val) => val)
 
 const $sortVal = createStore<SortType | null>(null)
-const changeSortVal = createEvent<SortType | undefined>()
+const changeSortVal = createEvent<SortType | null>()
 $sortVal.on(changeSortVal, (_, val) => val)
 
 export const Table = ({
@@ -87,9 +87,14 @@ export const Table = ({
     <div className="w-full overflow-auto">
       <div className="w-full p-2 flex items-center justify-end">
         <Input
+          placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
+        <Button className="ml-2" onClick={() => setSort(null)}>
+          Reset Sorting
+        </Button>
       </div>
 
       <table className="w-full">
@@ -135,15 +140,9 @@ export const Table = ({
                   }
 
                   <RowItem>
-                    <div className="flex items-center gap-2">
-                      <Button onClick={() => onDelete(item[keyField], keyField)}>
+                    <Button onClick={() => onDelete(item[keyField], keyField)}>
                         Delete
-                      </Button>
-
-                      <Button onClick={() => setSort(undefined)}>
-                        Reset Sorting
-                      </Button>
-                    </div>
+                    </Button>
                   </RowItem>
                 </tr>
               )
