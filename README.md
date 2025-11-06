@@ -24,3 +24,13 @@ yarn dev
 - Custom React hooks for common logic
 - State management with Effector
 - TypeScript support for type safety
+
+## Testing
+
+This project uses Vitest for testing.
+
+To run tests:
+
+```bash
+yarn test
+```
