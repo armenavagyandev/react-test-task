@@ -112,8 +112,8 @@ export const Table = ({
                   key={item[keyField]}
                   draggable
                   onDragStart={() => onDragStart(realIndex)}
-                  onDragOver={onDragOver}
-                  onDrop={() => onDrop(realIndex, onDragAndDrop)}
+                  onDragOver={(e) => onDragOver<HTMLTableRowElement>(e)}
+                  onDrop={() => onDrop({ handler: onDragAndDrop, targetIndex: realIndex })}
                 >
                   {
                     Object.values(item).map((value) => (
