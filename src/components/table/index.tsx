@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { createEvent, createStore } from 'effector'
+import { useUnit } from 'effector-react'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { Paginator } from '@/components/paginator'
@@ -20,6 +21,14 @@ type Props = {
   onDragAndDrop(draggingIndex: number, targetIndex: number): void
 }
 
+const $searchTerm = createStore<string>('')
+const changeSearchTerm = createEvent<string>()
+$searchTerm.on(changeSearchTerm, (_, val) => val)
+
+const $sortVal = createStore<SortType | null>(null)
+const changeSortVal = createEvent<SortType | undefined>()
+$sortVal.on(changeSortVal, (_, val) => val)
+
 export const Table = ({
   data,
   keyField = 'id',
@@ -28,8 +37,12 @@ export const Table = ({
   onDelete,
   onDragAndDrop,
 }: Props) => {
-  const [search, setSearch] = useState('')
-  const [sort, setSort] = useState<SortType>()
+  const [search, setSearch, sort, setSort ] = useUnit([
+    $searchTerm,
+    changeSearchTerm,
+    $sortVal,
+    changeSortVal,
+  ])
 
   const {
     page,

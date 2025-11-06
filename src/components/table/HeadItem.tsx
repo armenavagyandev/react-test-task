@@ -10,7 +10,7 @@ export type SortType = {
 type Props = {
   sortable?: boolean
   sortableField?: string
-  sort?: SortType
+  sort?: SortType | null
   setSort?(val: SortType): void
 }
 
