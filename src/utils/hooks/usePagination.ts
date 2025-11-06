@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { createEvent, createStore } from 'effector'
 import { useUnit } from 'effector-react/effector-react.umd'
 
@@ -44,9 +44,15 @@ export const usePagination =  <T>({
   const nonNullableCurrentPage = currentPage ?? initialPage
   const nonNullablePerPage = perPage ?? initialPerPage
 
-  const onNext = () => setCurrentPage(currentPage !== paginationInfo.totalPages ? nonNullableCurrentPage + 1 : currentPage)
+  const onNext = useCallback(
+    () => setCurrentPage(currentPage !== paginationInfo.totalPages ? nonNullableCurrentPage + 1 : currentPage),
+    [currentPage, nonNullableCurrentPage, paginationInfo.totalPages, setCurrentPage],
+  )
 
-  const onPrevious = () => setCurrentPage(nonNullableCurrentPage === 1 ? nonNullableCurrentPage : nonNullableCurrentPage - 1)
+  const onPrevious = useCallback(
+    () => setCurrentPage(nonNullableCurrentPage === 1 ? nonNullableCurrentPage : nonNullableCurrentPage - 1),
+    [nonNullableCurrentPage, setCurrentPage],
+  )
 
   useEffect(() => {
     setCurrentPage(initialPage ?? 1)
